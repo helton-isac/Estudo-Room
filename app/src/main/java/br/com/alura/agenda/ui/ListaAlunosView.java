@@ -1,7 +1,6 @@
 package br.com.alura.agenda.ui;
 
 import android.app.AlertDialog;
-import android.arch.persistence.room.Room;
 import android.content.Context;
 import android.view.MenuItem;
 import android.widget.AdapterView;
@@ -21,11 +20,7 @@ public class ListaAlunosView {
     public ListaAlunosView(Context context) {
         this.context = context;
         this.adapter = new ListaAlunosAdapter(this.context);
-        this.dao = Room
-                .databaseBuilder(context, AgendaDatabase.class, "agenda.db")
-                .allowMainThreadQueries()
-                .build()
-                .getRoomAlunoDAO();
+        this.dao = AgendaDatabase.getInstance(this.context).getRoomAlunoDAO();
     }
 
     public void confirmaRemocao(final MenuItem item) {
