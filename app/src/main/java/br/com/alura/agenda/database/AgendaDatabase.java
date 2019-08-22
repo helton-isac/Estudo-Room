@@ -19,6 +19,7 @@ public abstract class AgendaDatabase extends RoomDatabase {
         return Room
                 .databaseBuilder(context, AgendaDatabase.class, AGENDA_DB)
                 .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
                 .build();
     }
 }
