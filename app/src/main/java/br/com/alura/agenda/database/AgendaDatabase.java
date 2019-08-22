@@ -8,7 +8,7 @@ import android.content.Context;
 import br.com.alura.agenda.database.dao.RoomAlunoDAO;
 import br.com.alura.agenda.model.Aluno;
 
-@Database(entities = {Aluno.class}, version = 1, exportSchema = false)
+@Database(entities = {Aluno.class}, version = 2, exportSchema = false)
 public abstract class AgendaDatabase extends RoomDatabase {
 
     public static final String AGENDA_DB = "agenda.db";
