@@ -1,10 +1,11 @@
 package br.com.alura.agenda.database;
 
+import android.content.Context;
+
 import androidx.room.Database;
 import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
-import android.content.Context;
 
 import br.com.alura.agenda.database.converter.ConversorCalendar;
 import br.com.alura.agenda.database.dao.AlunoDAO;
@@ -18,6 +19,8 @@ public abstract class AgendaDatabase extends RoomDatabase {
 
     private static final String NOME_BANCO_DE_DADOS = "agenda.db";
 
+    public abstract AlunoDAO getAlunoDAO();
+
     public static AgendaDatabase getInstance(Context context) {
         return Room
                 .databaseBuilder(context, AgendaDatabase.class, NOME_BANCO_DE_DADOS)
@@ -25,6 +28,4 @@ public abstract class AgendaDatabase extends RoomDatabase {
                 .addMigrations(TODAS_MIGRATIONS)
                 .build();
     }
-
-    public abstract AlunoDAO getRoomAlunoDAO();
 }

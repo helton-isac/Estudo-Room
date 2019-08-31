@@ -2,10 +2,11 @@ package br.com.alura.agenda.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
+
+import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.database.AgendaDatabase;
@@ -28,7 +29,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_formulario_aluno);
-        dao = AgendaDatabase.getInstance(this).getRoomAlunoDAO();
+        AgendaDatabase database = AgendaDatabase.getInstance(this);
+        dao = database.getAlunoDAO();
         inicializacaoDosCampos();
         carregaAluno();
     }

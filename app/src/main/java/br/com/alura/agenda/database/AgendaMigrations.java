@@ -1,8 +1,8 @@
 package br.com.alura.agenda.database;
 
-import androidx.sqlite.db.SupportSQLiteDatabase;
-import androidx.room.migration.Migration;
 import androidx.annotation.NonNull;
+import androidx.room.migration.Migration;
+import androidx.sqlite.db.SupportSQLiteDatabase;
 
 class AgendaMigrations {
 
