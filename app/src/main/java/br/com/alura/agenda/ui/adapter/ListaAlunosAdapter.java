@@ -11,15 +11,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 import br.com.alura.agenda.R;
+import br.com.alura.agenda.database.AgendaDatabase;
+import br.com.alura.agenda.database.dao.TelefoneDAO;
 import br.com.alura.agenda.model.Aluno;
+import br.com.alura.agenda.model.Telefone;
 
 public class ListaAlunosAdapter extends BaseAdapter {
 
     private final List<Aluno> alunos = new ArrayList<>();
     private final Context context;
+    private final TelefoneDAO dao;
 
     public ListaAlunosAdapter(Context context) {
         this.context = context;
+        dao = AgendaDatabase.getInstance(context).getTelefoneDAO();
     }
 
     @Override
@@ -49,7 +54,8 @@ public class ListaAlunosAdapter extends BaseAdapter {
         TextView nome = view.findViewById(R.id.item_aluno_nome);
         nome.setText(aluno.getNome());
         TextView telefone = view.findViewById(R.id.item_aluno_telefone);
-        telefone.setText(aluno.getTelefoneFixo());
+        Telefone primeiroTelefone = dao.buscaPrimeiroTelefoneDoAluno(aluno.getId());
+        telefone.setText(primeiroTelefone.getNumero());
     }
 
     private View criaView(ViewGroup viewGroup) {
@@ -58,7 +64,7 @@ public class ListaAlunosAdapter extends BaseAdapter {
                 .inflate(R.layout.item_aluno, viewGroup, false);
     }
 
-    public void atualiza(List<Aluno> alunos) {
+    public void atualiza(List<Aluno> alunos){
         this.alunos.clear();
         this.alunos.addAll(alunos);
         notifyDataSetChanged();

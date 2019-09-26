@@ -2,11 +2,10 @@ package br.com.alura.agenda.ui.activity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.EditText;
-
-import androidx.appcompat.app.AppCompatActivity;
 
 import br.com.alura.agenda.R;
 import br.com.alura.agenda.database.AgendaDatabase;
@@ -46,7 +45,7 @@ public class FormularioAlunoActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         int itemId = item.getItemId();
-        if (itemId == R.id.activity_formulario_aluno_menu_salvar) {
+        if(itemId == R.id.activity_formulario_aluno_menu_salvar){
             finalizaFormulario();
         }
         return super.onOptionsItemSelected(item);
@@ -66,8 +65,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
 
     private void preencheCampos() {
         campoNome.setText(aluno.getNome());
-        campoTelefoneFixo.setText(aluno.getTelefoneFixo());
-        campoTelefoneCelular.setText(aluno.getTelefoneCelular());
+//        campoTelefoneFixo.setText(aluno.getTelefoneFixo());
+//        campoTelefoneCelular.setText(aluno.getTelefoneCelular());
         campoEmail.setText(aluno.getEmail());
     }
 
@@ -95,8 +94,8 @@ public class FormularioAlunoActivity extends AppCompatActivity {
         String email = campoEmail.getText().toString();
 
         aluno.setNome(nome);
-        aluno.setTelefoneFixo(telefoneFixo);
-        aluno.setTelefoneCelular(telefoneCelular);
+//        aluno.setTelefoneFixo(telefoneFixo);
+//        aluno.setTelefoneCelular(telefoneCelular);
         aluno.setEmail(email);
     }
 }
